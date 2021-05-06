@@ -1,0 +1,97 @@
+=======================================================================
+                          CHAOS DATA ANALYZER
+                      The Professional Version 2.2
+                        (c) 2012 by J.C. Sprott
+              University of Wisconsin, Madison, WI 53706
+                     sprott@juno.physics.wisc.edu
+                    http://sprott.physics.wisc.edu/
+=======================================================================
+
+                             Introduction
+
+     CHAOS DATA ANALYZER is a collection of programs that analyze a 
+one-dimensional array of data which is taken to be some function X(t) 
+evaluated at equal increments of the variable t.  The increments are 
+taken as unity.  The array is supplied by the user in the form of an 
+ASCII file of numbers with each number separated from the one before 
+it by a space, comma, carriage return, or line feed.  Data can be from 
+an experimental measurement or from some numerical calculation such as 
+the companion CHAOS DEMONSTRATIONS package.  Files containing sample 
+data are included.  The programs are intended to facilitate extraction 
+of hidden determinism in what may look like random noise. 
+
+     To start the program, place the diskette in drive A, and from the 
+A> prompt, type CDA and then press <Enter>.  The program will load the 
+file CHAOS.DAT which contains data from a numerical solution of the 
+Lorenz equations.  To analyze a different datafile, type CDA followed 
+by the name of the file to be analyzed and then press <Enter>.  You may 
+also run the program from a hard disk by first copying all the files on 
+the diskette to some appropriate subdirectory on the hard disk.  Change 
+to that subdirectory and proceed as above. 
+
+
+                     Customization and Automation
+
+     The CDA command will accept on the command line the name of a data 
+file to be analyzed followed by a comma and then a string of characters 
+representing a sequence of keystrokes to be executed automatically when 
+execution begins.  This string may contain single-digit numbers that 
+will cause a delay for a corresponding number of seconds.  For example, 
+typing CDA ,A9XB9XC9X at the DOS prompt will read the default file 
+CHAOS.DAT and will then cycle through the first three programs, 
+spending nine seconds on each.  You can produce a longer delay by using 
+multiple digits (e.g., 99 gives an eighteen-second delay).  You can 
+display text embedded in quotes.  Try a command such as CDA ,"Let's 
+look at the Lorenz attractor..."3M.
+     
+     You can execute DOS commands or user-supplied .BAT, .EXE, or .COM 
+files by embedding them in the command string enclosed within brackets 
+[], but external commands require that COMMAND.COM be in the current 
+path.  
+     
+     You can also save the output of a calculation to a disk file by 
+putting a filename in braces on the command line.  For example, CDA 
+,D{POLYFIT.DAT} will save the polynomial fit to the data in CHAOS.DAT 
+in the file POLYFIT.DAT.  To save the output of the last calculation 
+performed before exiting to DOS, place the filename in braces as the 
+first (or only) item in the command string, such as CDA ,{RECENT.DAT}.  
+The next time you start CDA, you can type CDA RECENT at the DOS prompt 
+to analyze the file just created.  
+     
+     Several other special commands are supported as follows: 
+
+          - waits until the space bar is pressed
+          ; dissolves the screen display
+          ? initiates the help feature <F1>
+          $ displays the disk directory <F2>
+          @ displays the program logo <F3>
+          ! displays a summary of the data <F4>
+          % executes commands in AUTO.TXT <F5>
+          ^ prints the screen <Print Screen>
+          . returns to DOS <Esc>
+
+     You can cycle backward through the parameters, views, graphics 
+modes, and colors by holding down the <Shift> key or by using lower-
+case letters in the automatic command sequence.  The <+> and <-> keys 
+change the color palette if your hardware supports it.  
+     
+     Placing an R at the end of the command string causes the commands 
+to repeat indefinitely.  The special command CDA ,R (equivalent to CDA 
+,%R) activates the automatic continuous analysis mode.  You can 
+interrupt automatic operation by pressing any key or mouse button, but 
+the cycle will resume after 45 seconds of keyboard and mouse 
+inactivity.  You can single-step through the automatic sequence using 
+<Tab>.  To exit the automatic continuous mode, press <Ctrl><Home> and 
+then release them and quickly press <Esc>.  The diskette may be removed 
+from the drive after the program has begun cycling.  The commands 
+performed in the automatic mode are recorded in a file called AUTO.TXT, 
+which you can modify with any word processor that will read and write 
+ASCII files.  
+     
+     You can cause the program to take its commands from a different 
+file that you provide by starting CHAOS DATA ANALYZER with a command 
+such as CDA ,(MYSCRIPT.TXT). 
+
+     Current information on the latest version of the program and other 
+developments are available on the World Wide Web at
+http://sprott.physics.wisc.edu/cda.htm.
