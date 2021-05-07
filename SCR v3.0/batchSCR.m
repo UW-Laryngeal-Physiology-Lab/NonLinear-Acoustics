@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% batch_SCR.m
+% batchSCR.m
 %
 % Use this script to calculate SCR values on cleaned .wav files that have
 % been trimmed to be 0.75 seconds long.
