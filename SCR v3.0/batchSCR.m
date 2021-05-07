@@ -12,7 +12,7 @@
 % Window size for STFT = 0.012 seconds
 % 0.75 second voice segments were used in paper also here in this script
 %
-% Last edited by: Austin J. Scholp, MS on 4/21/2021
+% Last edited by: Austin J. Scholp, MS on 5/7/2021
 %
 % Edited for usability and removed unnecessary scripts
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -36,6 +36,8 @@ if isa(filenames, 'char')==1 %check if filenames is single string
 end
 
 wavFiles = cell(1,length(filenames));
+data = cell(1,length(filenames));
+Fs = zeros(1,length(filenames));
 
 for k = 1:length(filenames)
     wavFiles{k} = dir(strcat([path filenames{k}]));
