@@ -49,7 +49,7 @@ end
 disp('Please wait.');
 %% Calculate SCR
 
-scrResults = {'Filename' ' SCR Value'}; % preallocate, lazy/easy/quick
+scrResults = {'Filename' 'SCR Value'}; % preallocate, lazy/easy/quick
 windowLength = 0.012; % Don't change this unless you know what you're doing
 
 %run SCR script for each wav file
