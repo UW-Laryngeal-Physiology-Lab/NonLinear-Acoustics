@@ -1,5 +1,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % D2K2.com
+% DISCLAIMER: 
+% This script has not undergone thorough testing as of this writing.
+% Results may not be 100% accurate.
 %
 % Use this script to calculate correlation dimension (D2) and second-order
 % entropy (K2) values on .wav files that have been trimmed to be 0.75
@@ -37,6 +40,9 @@ clearvars -except data
 disp('Please wait.');
 
 %% Correlation dimension (D2)
+% This section uses new functions provided by one of the toolboxes (I don't
+% Remember which).
+
 yData = data(:,1);
 dim = 2;
 Np = 100;
@@ -52,7 +58,9 @@ D2 = correlationDimension(yData,[],dim,'MinRadius',MinR,'MaxRadius',...
 clearvars -except D2 yData
 disp('D2 = ');
 disp(D2);
+
 %% Second-order entropy (K2)
+% This section was copied from the original script (DqKqScrip.m)
 
 nPlots = 4;
 

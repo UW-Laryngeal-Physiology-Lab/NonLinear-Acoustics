@@ -66,7 +66,7 @@ end
 clearvars -except scrResults %deletes unused/temp variables
 %% Format and write output
 %Convert data to table for easy printing
-dataTable = cell2table(scrResults);
+dataTable = cell2table(scrResults(2:end,:), 'VariableNames', {'File' 'SCR'});
 
 fileTime = datestr(datetime);
 fileTime = strrep(fileTime, ':', '-');
@@ -76,7 +76,7 @@ fileTime = strrep(fileTime, ' ', '_');
 [~,~] = mkdir('Results');
 
 %Print table to results directory
-writetable(dataTable, strcat(['Results\SCR_Results_' fileTime]));
+writetable(dataTable, strcat(['Results\SCR_Results_' fileTime '.csv']));
 disp('SCR results listed in file: ');
 disp(strcat(['SCR_Results_' fileTime]));
 clear status fileTime msg 
