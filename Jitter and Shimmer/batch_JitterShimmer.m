@@ -1,6 +1,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % batch_JitterShimmer
 %
+% Required Functions:
+%       JitterShimmer.m
+%       peakdet.m
+%
 % Use this script to calculate jitter and shimmer values on .wav files that
 % have been trimmed to be 0.75 seconds long.
 %
@@ -9,7 +13,7 @@
 % Last edited by: Austin J. Scholp, MS on 5/7/2021
 %
 % DISCLAIMER: I'm not 100% sure this will give the same values as TF32.
-%             You should test a few samples to make sure.
+%             You should test a few samples to verify.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -57,7 +61,8 @@ end
 
 %% Format and write output
 %Convert data to table for easy printing
-dataTable = cell2table(Results);
+dataTable = cell2table(Results(2:end,:), 'VariableNames',...
+    {'File' 'Jitter' 'Shimmer'});
 
 fileTime = datestr(datetime);
 fileTime = strrep(fileTime, ':', '-');
@@ -67,7 +72,7 @@ fileTime = strrep(fileTime, ' ', '_');
 [~,~] = mkdir('Results');
 
 %Print table to results directory
-writetable(dataTable, strcat(['Results\JitterShimmer_' fileTime]));
+writetable(dataTable, strcat(['Results\JitterShimmer_' fileTime '.csv']));
 disp('Results listed in file: ');
 disp(strcat(['JitterShimmer_' fileTime]));
 clear status fileTime msg

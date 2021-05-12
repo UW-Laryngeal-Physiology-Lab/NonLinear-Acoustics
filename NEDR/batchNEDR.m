@@ -6,7 +6,7 @@
 %   Curve Fitting Toolbox
 %
 % FUNCTIONS CALLED:
-%   interateNLSS
+%   interateNLSS -> NLSTFT -> tftb_window
 %   polylsqr
 %
 %   Window size for STFT = 0.012 seconds
@@ -14,7 +14,7 @@
 %
 % Primary Author: Boquan Liu, PhD
 %
-% Last Edited on /24/2021 by Austin J. Scholp, MS
+% Last Edited on 5/12/2021 by Austin J. Scholp, MS
 %
 % Formatting updates; error handling when file selection is cancelled
 % Removed need for hard coding the file names
@@ -39,6 +39,8 @@ if isa(filenames, 'char')==1 %check if filenames is single string
 end
 
 wavFiles = cell(1,length(filenames));
+data = cell(1,length(filenames));
+Fs = zeros(1,length(filenames));
 
 for k = 1:length(filenames)
     wavFiles{k} = dir(strcat([path filenames{k}]));
@@ -67,13 +69,13 @@ for  h = 1:length(filenames)
     
     NEDR_Results{h+1,1} = filenames{h} ;
     NEDR_Results{h+1,2} = strcat([' ' num2str(scrVal)]);
-    NLEMaxima(h,:)=NLE_Instaneous;
-    
+        
 end
 clearvars -except NEDR_Results %deletes unused/temp variables
 %% Format and write output
 %Convert data to table for easy printing
-dataTable = cell2table(NEDR_Results);
+dataTable = cell2table(NEDR_Results(2:end,:), 'VariableNames',...
+    {'File' 'NEDR'});
 
 fileTime = datestr(datetime);
 fileTime = strrep(fileTime, ':', '-');
@@ -83,7 +85,7 @@ fileTime = strrep(fileTime, ' ', '_');
 [~,~] = mkdir('Results');
 
 %Print table to results directory
-writetable(dataTable, strcat(['Results\NEDR_Results_' fileTime]));
+writetable(dataTable, strcat(['Results\NEDR_Results_' fileTime '.csv']));
 disp('SCR results listed in file: ');
 disp(strcat(['NEDR_Results_' fileTime]));
 clear status fileTime msg
