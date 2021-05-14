@@ -35,13 +35,8 @@ if isa(filenames, 'char')==1 %check if filenames is single string
     return
 end
 
-wavFiles = cell(1,length(filenames));
 data = cell(1,length(filenames));
 Fs = zeros(1,length(filenames));
-
-for k = 1:length(filenames)
-    wavFiles{k} = dir(strcat([path filenames{k}]));
-end
 
 %get data of selected files
 for k = 1:length(filenames)
@@ -66,7 +61,8 @@ end
 clearvars -except scrResults %deletes unused/temp variables
 %% Format and write output
 %Convert data to table for easy printing
-dataTable = cell2table(scrResults(2:end,:), 'VariableNames', {'File' 'SCR'});
+dataTable = cell2table(scrResults(2:end,:), 'VariableNames',...
+    {'File' 'SCR'});
 
 fileTime = datestr(datetime);
 fileTime = strrep(fileTime, ':', '-');
