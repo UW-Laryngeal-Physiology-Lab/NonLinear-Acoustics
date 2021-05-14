@@ -48,6 +48,7 @@ for k = 1:length(filenames)
     [data{k}, Fs(k)]= audioread(strcat([path filenames{k}]));
 end
 
+disp('Calculating. Please wait.');
 %% Calculate Jitter and Shimmer
 
 Results = {'Filename' 'Jitter' 'Shimmer'};
