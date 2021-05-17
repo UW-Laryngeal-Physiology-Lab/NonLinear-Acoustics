@@ -62,11 +62,10 @@ window_timeLength = 0.012; %change only if you know what you're doing
 %run NLSS script for each wav file
 for  h = 1:length(filenames)
     data_temp=data{h};
-    count=Fs(k)/50000;
+    count=Fs(h)/50000;
     data_cc=data_temp(1000:fix(1000+Fs(h)*0.1e-1));
     [NLEMaxima_Instaneous, NLE_Instaneous, scrVal, tfr, time, fre] =...
         iterateNLSS(data_cc, Fs(h),window_timeLength);
-    
     NEDR_Results{h+1,1} = filenames{h} ;
     NEDR_Results{h+1,2} = strcat([' ' num2str(scrVal)]);
         

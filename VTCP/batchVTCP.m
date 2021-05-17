@@ -1,8 +1,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % batchVTCP.m
 %
-% PURPOSE?
-% REQUIREMENTS?
+% Compute the Voice Type Component Profiles for multiple 0.75 second
+% audio samples.
+%
+% REQUIREMENTS:
+%       z1test.m
 %
 % Created by: Boquan Liu
 %
@@ -74,7 +77,7 @@ for r=1:length(filenames)
    end
 end
 
-%clearvars -except results
+clearvars -except results
 
 %% Format cell data into table and save
 dataTable = cell2table(results(2:end,:), 'VariableNames', {'File'...
