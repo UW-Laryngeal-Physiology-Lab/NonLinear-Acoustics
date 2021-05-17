@@ -1,14 +1,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% demo_chaos_detection.m
+% batchVTCP.m
 %
 % PURPOSE?
 % REQUIREMENTS?
 %
 % Created by: Boquan Liu
 %
-% Last edited by: Austin J. Scholp, MS on 5/14/2021
+% Last edited by: Austin J. Scholp, MS on 5/17/2021
 %
-% Edited for usability and to remove warnings
+% Edited for usability and to remove warnings. Cleaned up unused scripts.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 clc; clear; close
