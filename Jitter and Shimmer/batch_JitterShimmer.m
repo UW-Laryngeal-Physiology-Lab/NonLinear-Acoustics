@@ -35,13 +35,8 @@ if isa(filenames, 'char')==1 %check if filenames is single string
     return
 end
 
-wavFiles = cell(1,length(filenames));
 data = cell(1,length(filenames));
 Fs = zeros(1,length(filenames));
-
-for k = 1:length(filenames)
-    wavFiles{k} = dir(strcat([path filenames{k}]));
-end
 
 %get data of selected files
 for k = 1:length(filenames)
