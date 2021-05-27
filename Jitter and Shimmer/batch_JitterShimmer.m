@@ -10,7 +10,7 @@
 %
 % Created by: Someone, maybe Dr. Boquan Liu
 %
-% Last edited by: Austin J. Scholp, MS on 5/7/2021
+% Last edited by: Austin J. Scholp, MS on 5/27/2021
 %
 % DISCLAIMER: I'm not 100% sure this will give the same values as TF32.
 %             You should test a few samples to verify.
@@ -35,21 +35,21 @@ if isa(filenames, 'char')==1 %check if filenames is single string
     return
 end
 
-data = cell(1,length(filenames));
+data = cell(1,length(filenames)); %pre-allocate arrays
 Fs = zeros(1,length(filenames));
 
 %get data of selected files
 for k = 1:length(filenames)
-    [data{k}, Fs(k)]= audioread(strcat([path filenames{k}]));
+    [data{k}, Fs(k)] = audioread(strcat([path filenames{k}]));
 end
 
 disp('Calculating. Please wait.');
 %% Calculate Jitter and Shimmer
 
 Results = {'Filename' 'Jitter' 'Shimmer'};
-for j=1:length(data)
-    t=0:1/Fs(j):(length(data{j})-1)/Fs(j);
-    [shimmer, jitter]=JitterShimmer(data{j},t,Fs(1));
+for j = 1:length(data)
+    t = 0:1/Fs(j):(length(data{j})-1)/Fs(j); %creates time array
+    [shimmer, jitter] = JitterShimmer(data{j},t,Fs(1));
     Results{j+1,1} = filenames{j} ;
     Results{j+1,2} = strcat([' ' num2str(jitter)]);
     Results{j+1,3} = strcat([' ' num2str(shimmer)]);

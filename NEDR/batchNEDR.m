@@ -14,10 +14,9 @@
 %
 % Primary Author: Boquan Liu, PhD
 %
-% Last Edited on 5/12/2021 by Austin J. Scholp, MS
+% Last Edited on 5/27/2021 by Austin J. Scholp, MS
+%   Cleanup & commenting  
 %
-% Formatting updates; error handling when file selection is cancelled
-% Removed need for hard coding the file names
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 clc; clear; close;
@@ -38,13 +37,8 @@ if isa(filenames, 'char')==1 %check if filenames is single string
     return
 end
 
-wavFiles = cell(1,length(filenames));
 data = cell(1,length(filenames));
 Fs = zeros(1,length(filenames));
-
-for k = 1:length(filenames)
-    wavFiles{k} = dir(strcat([path filenames{k}]));
-end
 
 %get data of selected files
 for k = 1:length(filenames)
@@ -61,9 +55,9 @@ window_timeLength = 0.012; %change only if you know what you're doing
 
 %run NLSS script for each wav file
 for  h = 1:length(filenames)
-    data_temp=data{h};
-    count=Fs(h)/50000;
-    data_cc=data_temp(1000:fix(1000+Fs(h)*0.1e-1));
+    data_temp = data{h};
+    count = Fs(h)/50000;
+    data_cc = data_temp(1000:fix(1000+Fs(h)*0.1e-1));
     [NLEMaxima_Instaneous, NLE_Instaneous, scrVal, tfr, time, fre] =...
         iterateNLSS(data_cc, Fs(h),window_timeLength);
     NEDR_Results{h+1,1} = filenames{h} ;
