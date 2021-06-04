@@ -16,7 +16,7 @@
 %
 % 0.75 second voice segments should be used with this script
 %
-% Recreated by: Austin J. Scholp, MS on 5/7/2021
+% Recreated by: Austin J. Scholp, MS on 6/4/2021
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -24,7 +24,7 @@ clc; clear; close
 
 %% Load Files
 %Prompts the user to choose a .wav files for anlysis
-disp('Select .wav files for analysis. You MUST choose more than one.');
+disp('Select .wav file for analysis.');
 [filename, path] = uigetfile('*.wav');
 
 if isa(filename, 'double')==1 %check if filenames is a number
@@ -37,11 +37,11 @@ end
 [data, ~]= audioread(strcat([path filename]));
 
 clearvars -except data
-disp('Please wait.');
+disp('Please wait. This will take a few seconds.');
 
 %% Correlation dimension (D2)
 % This section uses new functions provided by one of the toolboxes (I don't
-% Remember which).
+% remember which).
 
 yData = data(:,1);
 dim = 2;
