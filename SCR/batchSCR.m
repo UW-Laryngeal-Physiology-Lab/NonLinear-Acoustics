@@ -52,7 +52,7 @@ windowLength = 0.012; % Don't change this unless you know what you're doing
 %run SCR script for each wav file
 for  h = 1:k
     data_temp = data{h};
-    data_cc = data_temp(1000:fix(1000+Fs(h)*0.7-1));
+    data_cc = data_temp(1000:fix(1000+Fs(h)*0.7e-1));
     scrVal = getSCR(data_cc, Fs(h), filenames{h}, windowLength);
     scrResults{h+1,1} = filenames{h} ;
     scrResults{h+1,2} = strcat([' ' num2str(scrVal)]);
