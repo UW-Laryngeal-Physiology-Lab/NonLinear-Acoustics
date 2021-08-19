@@ -50,7 +50,7 @@ Chaos_frame = cell(1,length(filenames)); %preallocate cell array
 %run analysis for each wav file
 for i = 1:length(filenames)
     data_temp = data{i};
-    data_cc = data_temp(1:Fs(i)*0.5);
+    data_cc = data_temp(1:Fs(i)*0.05);
     num = 1000;
     data_resamp = resample(data_cc,2000,Fs(i));%resample the data
     [~, Chaos_frame{i}] = z1test(data_resamp,num);
