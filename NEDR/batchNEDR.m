@@ -57,7 +57,8 @@ window_timeLength = 0.012; %change only if you know what you're doing
 for  h = 1:length(filenames)
     data_temp = data{h};
     count = Fs(h)/50000;
-    data_cc = data_temp(1000:fix(1000+Fs(h)*0.1e-1));
+    %trims the data sample further for some reason
+    data_cc = data_temp(1000:fix(1000+Fs(h)*0.05)); 
     [NLEMaxima_Instaneous, NLE_Instaneous, scrVal, tfr, time, fre] =...
         iterateNLSS(data_cc, Fs(h),window_timeLength);
     NEDR_Results{h+1,1} = filenames{h} ;
@@ -79,6 +80,6 @@ fileTime = strrep(fileTime, ' ', '_');
 
 %Print table to results directory
 writetable(dataTable, strcat(['Results\NEDR_Results_' fileTime '.csv']));
-disp('SCR results listed in file: ');
+disp('NEDR results listed in file: ');
 disp(strcat(['NEDR_Results_' fileTime]));
 clear status fileTime msg
