@@ -58,7 +58,8 @@ for  h = 1:length(filenames)
     data_temp = data{h};
     count = Fs(h)/50000;
     %trims the data sample further for some reason
-    data_cc = data_temp(1000:fix(1000+Fs(h)*0.05)); 
+    data_cc = data_temp(1000:fix(1000+Fs(h)*0.05));
+    data_cc = data_cc(:);   % <-- force column vector. Added fix on 07/30/26 bc not working
     [NLEMaxima_Instaneous, NLE_Instaneous, scrVal, tfr, time, fre] =...
         iterateNLSS(data_cc, Fs(h),window_timeLength);
     NEDR_Results{h+1,1} = filenames{h} ;
